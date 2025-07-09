@@ -1,23 +1,39 @@
-
 {
   "manifest_version": 3,
-  "name": "LeetCode Helper AI",
-  "version": "1.0",
-  "description": "Uses AI to suggest hints for LeetCode problems.",
-  "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["https://leetcode.com/*"],
+  "name": "LeetRoast",
+  "version": "1.1",
+  "description": "AI-powered LeetCode assistant that gives hints and light roasts.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icon.png",
       "48": "icon.png",
-      "128": "icon.png"
+      "128": "spark.png"
     }
   },
   "content_scripts": [
     {
       "matches": ["https://leetcode.com/problems/*"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icon.png"],
+      "matches": ["<all_urls>"]
     }
   ]
 }
